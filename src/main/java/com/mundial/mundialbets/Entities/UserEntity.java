@@ -20,7 +20,6 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String Name;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

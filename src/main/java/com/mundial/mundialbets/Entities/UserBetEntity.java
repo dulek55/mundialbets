@@ -12,12 +12,12 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "userBet")
+@Table(name = "userBets")
 public class UserBetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private String bet;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;

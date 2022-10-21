@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
@@ -13,18 +14,28 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "game")
+@Table(name = "games")
 public class GameEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String Name;
+    LocalDate gameDate;
+    String result;
+    String resultAfterOvertime;
 
     @ManyToOne
-    @JoinColumn(name = "team_id")
-    private TeamEntity team;
+    @JoinColumn(name = "home_team_id")
+    private TeamEntity homeTeam;
+
+    @ManyToOne
+    @JoinColumn(name = "away_team_id")
+    private TeamEntity awayTeam;
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
     private Set<UserBetEntity> userBets;
+
+    @OneToOne
+    @JoinColumn(name="betApi_id")
+    private BetApiEntity betApi;
 }

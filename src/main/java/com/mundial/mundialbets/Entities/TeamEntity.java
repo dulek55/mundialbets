@@ -13,14 +13,18 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "team")
+@Table(name = "teams")
 public class TeamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String name;
+    private String countryName;
+    private String countryCode;
 
-    private String Name;
+    @OneToMany(mappedBy = "homeTeam", cascade = CascadeType.ALL)
+    private Set<GameEntity> homeGames;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
-    private Set<GameEntity> games;
+    @OneToMany(mappedBy = "awayTeam", cascade = CascadeType.ALL)
+    private Set<GameEntity> awayGames;
 }
