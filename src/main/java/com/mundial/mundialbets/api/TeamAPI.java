@@ -11,7 +11,7 @@ import java.util.List;
 public interface TeamAPI {
 
     @PutMapping("/{id}")
-    ResponseEntity<TeamEntity> updateTeam(@PathVariable Long id, @RequestBody TeamEntity teamEntity);
+    ResponseEntity<TeamEntity> updateTeam(@PathVariable Long id, @RequestBody TeamEntity teamEntity) throws Exception;
 
     @PostMapping
     ResponseEntity<TeamEntity> addTeam(@RequestBody TeamEntity teamEntity);
@@ -20,8 +20,8 @@ public interface TeamAPI {
     ResponseEntity<List<TeamEntity>> getTeam();
 
     @GetMapping("/{id}")
-    ResponseEntity<TeamEntity> getTeamById(@PathVariable Long id);
+    ResponseEntity<TeamEntity> getTeamById(@PathVariable Long id) throws Exception;
 
     @DeleteMapping("/{id}")
-    ResponseEntity<?> deleteTeamById(@PathVariable Long id);
+    ResponseEntity<?> deleteTeamById(@PathVariable Long id) throws Exception;
 }

@@ -10,7 +10,7 @@ import java.util.List;
 public interface MatchAPI {
 
     @PutMapping("/{id}")
-    ResponseEntity<MatchEntity> updateMatch(@PathVariable Long id, @RequestBody MatchEntity matchEntity);
+    ResponseEntity<MatchEntity> updateMatch(@PathVariable Long id, @RequestBody MatchEntity matchEntity) throws Exception;
 
     @PostMapping
     ResponseEntity<MatchEntity> addMatch(@RequestBody MatchEntity matchEntity);
@@ -19,8 +19,8 @@ public interface MatchAPI {
     ResponseEntity<List<MatchEntity>> getMatch();
 
     @GetMapping("/{id}")
-    ResponseEntity<MatchEntity> getMatchById(@PathVariable Long id);
+    ResponseEntity<MatchEntity> getMatchById(@PathVariable Long id) throws Exception;
 
     @DeleteMapping("/{id}")
-    ResponseEntity<?> deleteMatchById(@PathVariable Long id);
+    ResponseEntity<?> deleteMatchById(@PathVariable Long id) throws Exception;
 }

@@ -17,7 +17,7 @@ public class UserController implements UserAPI {
     }
 
     @Override
-    public ResponseEntity<UserEntity> updateUser(Long id, UserEntity userEntity) {
+    public ResponseEntity<UserEntity> updateUser(Long id, UserEntity userEntity) throws Exception {
         UserEntity updateUser = userService.updateUser(id, userEntity);
         return ResponseEntity.ok(updateUser);
     }

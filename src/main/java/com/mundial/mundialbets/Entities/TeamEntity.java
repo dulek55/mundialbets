@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -21,6 +21,6 @@ public class TeamEntity {
 
     private String Name;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE)
-    private List<MatchEntity> matches;
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+    private Set<MatchEntity> matches;
 }

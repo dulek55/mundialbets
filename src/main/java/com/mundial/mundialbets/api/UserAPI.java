@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/api/user")
 public interface UserAPI {
     @PutMapping("/{id}")
-    ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity userEntity);
+    ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity userEntity) throws Exception;
 
     @PostMapping
     ResponseEntity<UserEntity> addUser(@RequestBody UserEntity userEntity);

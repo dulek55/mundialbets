@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,6 +25,6 @@ public class MatchEntity {
     @JoinColumn(name = "team_id")
     private TeamEntity team;
 
-    @OneToMany(mappedBy = "match", cascade = CascadeType.REMOVE)
-    private List<UserBetEntity> userBets;
+    @OneToMany(mappedBy = "match", cascade = CascadeType.ALL)
+    private Set<UserBetEntity> userBets;
 }

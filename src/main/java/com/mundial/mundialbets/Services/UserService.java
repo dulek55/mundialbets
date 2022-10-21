@@ -19,7 +19,9 @@ public class UserService {
         return userRepository.save(userEntity);
     }
 
-    public UserEntity updateUser(Long id, UserEntity userEntity) {
+    public UserEntity updateUser(Long id, UserEntity userEntity) throws Exception {
+        userRepository.findById(id).orElseThrow(() -> new Exception("User not found", new Error("USER NOT FOUND")));
+        userEntity.setId(id);
         return userRepository.save(userEntity);
     }
 
