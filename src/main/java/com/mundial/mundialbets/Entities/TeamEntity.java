@@ -13,7 +13,7 @@ import java.util.Set;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "teams")
+@Table(name = "team")
 public class TeamEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,5 +22,5 @@ public class TeamEntity {
     private String Name;
 
     @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
-    private Set<MatchEntity> matches;
+    private Set<GameEntity> games;
 }

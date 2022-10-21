@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "userBets")
+@Table(name = "userBet")
 public class UserBetEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,6 +23,6 @@ public class UserBetEntity {
     private UserEntity user;
 
     @ManyToOne
-    @JoinColumn(name = "match_id")
-    private MatchEntity match;
+    @JoinColumn(name = "game_id")
+    private GameEntity game;
 }
