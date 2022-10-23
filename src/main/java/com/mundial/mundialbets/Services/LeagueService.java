@@ -1,11 +1,11 @@
 package com.mundial.mundialbets.Services;
 
-import com.mundial.mundialbets.Entities.GameEntity;
 import com.mundial.mundialbets.Entities.LeagueEntity;
 import com.mundial.mundialbets.Repositories.LeagueRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class LeagueService {
 
     private final LeagueRepository leagueRepository;
