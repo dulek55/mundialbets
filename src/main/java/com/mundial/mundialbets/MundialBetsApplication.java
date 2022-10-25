@@ -9,5 +9,4 @@ public class MundialBetsApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(MundialBetsApplication.class, args);
 	}
-
 }
