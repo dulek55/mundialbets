@@ -19,7 +19,7 @@ export default function Team() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(team)
         };
-        fetch('http://localhost:8080/api/team', requestOptions)
+        fetch('http://207.154.207.233:8080/api/team', requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();
@@ -41,7 +41,7 @@ export default function Team() {
     }
 
     React.useEffect(()=>{
-        fetch("http://localhost:8080/api/team")
+        fetch("http://207.154.207.233:8080/api/team")
         .then(res=>res.json())
         .then((result)=>{
             setTeams(result);
@@ -69,7 +69,7 @@ export default function Team() {
                     value={countryCode}
                     onChange={(e)=>setCode(e.target.value)}
                     />
-                    <Button id='buttonSubmit' variant="contained" color="secondary" onClick={handleClick}>SUBMIT</Button>
+                    <Button id='buttonSubmit' variant="contained" color="secondary" onClick={handleClick}>SUBMIT</Button> <br/>
                 </Box>
             </Paper>
 
