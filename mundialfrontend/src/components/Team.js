@@ -38,6 +38,15 @@ export default function Team() {
             .catch(error => {
                 console.error('There was an error!', error);
             });
+    
+    }
+    const handleRefresh=(e)=>{
+        fetch('http://207.154.207.233:8080/api/team')
+            .then(res=>res.json())
+            .then((result)=>{
+                setTeams(result);
+            });
+    
     }
 
     React.useEffect(()=>{
@@ -50,13 +59,13 @@ export default function Team() {
     },[])
 
     return (
-        <Container>
+        <Container>         
             <Paper elevation={3} style={paperStyle}>
                 <h1 style={{color:"blue"}}><u>Add team</u></h1>
                 <Box
                 component="form"
                 sx={{
-                    '& > *': { margin:"4px auto" },
+                    '& > *': { margin:"5px auto" },
                 }}
                 noValidate
                 autoComplete="off"
@@ -82,6 +91,7 @@ export default function Team() {
                         Country Code: {team.countryCode}
                     </Paper>
                 ))}
+                <Button id='buttonRefresh' variant="contained" color="secondary" onClick={handleRefresh}>Refresh</Button> <br/>
             </Paper>
         </Container>
     );
