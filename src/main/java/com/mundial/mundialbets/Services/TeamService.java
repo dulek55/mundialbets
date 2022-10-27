@@ -2,6 +2,7 @@ package com.mundial.mundialbets.Services;
 
 import com.mundial.mundialbets.Entities.TeamEntity;
 import com.mundial.mundialbets.Repositories.TeamRepository;
+import com.mundial.mundialbets.Repositories.TeamRepositoryCustom;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -9,9 +10,14 @@ import java.util.List;
 @Service
 public class TeamService {
     private final TeamRepository teamRepository;
+    private final TeamRepositoryCustom teamRepositoryCustom;
+    public TeamEntity getTeamByCountryCode(String code){
+        return teamRepositoryCustom.getTeamByCountryCode(code);
+    }
 
-    public TeamService(TeamRepository teamRepository) {
+    public TeamService(TeamRepository teamRepository, TeamRepositoryCustom teamRepositoryCustom) {
         this.teamRepository = teamRepository;
+        this.teamRepositoryCustom = teamRepositoryCustom;
     }
 
     public TeamEntity saveTeam(TeamEntity teamEntity) {

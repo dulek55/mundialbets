@@ -1,5 +1,7 @@
 package com.mundial.mundialbets.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +23,11 @@ public class TeamEntity {
     private String countryName;
     private String countryCode;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "homeTeam", cascade = CascadeType.ALL)
     private Set<GameEntity> homeGames;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "awayTeam", cascade = CascadeType.ALL)
     private Set<GameEntity> awayGames;
 }
