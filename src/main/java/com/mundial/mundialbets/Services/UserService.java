@@ -1,10 +1,12 @@
 package com.mundial.mundialbets.Services;
 
+import com.mundial.mundialbets.Entities.LeagueEntity;
 import com.mundial.mundialbets.Entities.UserEntity;
 import com.mundial.mundialbets.Registration.Token.ConfirmationTokenEntity;
 import com.mundial.mundialbets.Registration.Token.ConfirmationTokenService;
 import com.mundial.mundialbets.Repositories.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -12,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -53,5 +56,16 @@ public class UserService implements UserDetailsService {
     }
     public int enableUser (String email) {
         return userRepository.enableUser(email);
+    }
+
+    public UserEntity getUserById(Long id) throws Exception {
+        return userRepository.findById(id)
+                .orElseThrow(() -> new Exception("User id not found : " + id, new Error("User NOT FOUND")));
+    }
+    public Optional<UserEntity> findById(Long id) {
+        return userRepository.findById(id);
+    }
+    public UserEntity saveUser(UserEntity userEntity) {
+        return userRepository.save(userEntity);
     }
 }

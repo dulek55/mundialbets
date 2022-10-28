@@ -1,5 +1,6 @@
 package com.mundial.mundialbets.Entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.mundial.mundialbets.Enums.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,6 +44,7 @@ public class UserEntity implements UserDetails {
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     Set<UserBetEntity> usersBets;
 
+    @JsonBackReference
     @ManyToMany(mappedBy = "users")
     List<LeagueEntity> leagues = new ArrayList<>();
 
@@ -97,5 +99,13 @@ public class UserEntity implements UserDetails {
     @Override
     public int hashCode() {
         return getClass().hashCode();
+    }
+
+    public void addLeague(LeagueEntity leagueEntity) {
+        this.leagues.add(leagueEntity);
+    }
+
+    public void removeLeague(LeagueEntity leagueEntity) {
+        this.leagues.remove(leagueEntity);
     }
 }

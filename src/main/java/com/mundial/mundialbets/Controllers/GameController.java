@@ -70,8 +70,8 @@ public class GameController implements GameAPI {
     @Override
     public ResponseEntity<List<GameModel>> getGame() {
         List<GameModel> gameModels = new ArrayList<>();
-        GameModel gameModel = new GameModel();
         for (GameEntity game : gameService.getGames()) {
+            GameModel gameModel = new GameModel();
             gameModel.makeModel(game);
             gameModels.add(gameModel);
         }
