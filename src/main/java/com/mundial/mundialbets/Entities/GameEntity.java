@@ -24,15 +24,17 @@ public class GameEntity {
     private Long id;
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
     LocalDateTime gameDate;
-    String result;
-    String resultAfterOvertime;
+    Integer homeScore;
+    Integer awayScore;
+    Integer homeScoreAfterOvertime;
+    Integer awayScoreAfterOvertime;
 
-    @JsonManagedReference
+    @JsonBackReference(value = "homeTeam-game")
     @ManyToOne
     @JoinColumn(name = "home_team_id")
     private TeamEntity homeTeam;
 
-    @JsonManagedReference
+    @JsonBackReference(value = "awayTeam-game")
     @ManyToOne
     @JoinColumn(name = "away_team_id")
     private TeamEntity awayTeam;

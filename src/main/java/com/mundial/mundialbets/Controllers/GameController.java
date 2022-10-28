@@ -9,6 +9,7 @@ import com.mundial.mundialbets.api.GameAPI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,19 +23,36 @@ public class GameController implements GameAPI {
     }
 
     @Override
-    public ResponseEntity<GameEntity> updateGame(Long id, GameEntity gameEntity) throws Exception {
-        GameEntity updateEntity = gameService.updateGame(id, gameEntity);
-        return ResponseEntity.ok(updateEntity);
+    public ResponseEntity<GameModel> updateGame(Long id, GameModel gameModel) throws Exception {
+        GameEntity updateGame = gameService.getGamesById(id);
+        if(gameModel.getHomeTeamCode() != null) {
+            if(teamService.getTeamByCountryCode(gameModel.getHomeTeamCode()) == null)
+                throw new ApiRequestException("Home team not found!");
+            updateGame.setHomeTeam(teamService.getTeamByCountryCode(gameModel.getHomeTeamCode()));
+        }
+        if(gameModel.getAwayTeamCode() != null) {
+            if(teamService.getTeamByCountryCode(gameModel.getAwayTeamCode()) == null)
+                throw new ApiRequestException("Away team not found!");
+            updateGame.setAwayTeam(teamService.getTeamByCountryCode(gameModel.getAwayTeamCode()));
+        }
+        if(gameModel.getDateTime() != null)
+            updateGame.setGameDate(gameModel.getDateTime());
+        if(gameModel.getHomeScore() != null)
+            updateGame.setHomeScore(gameModel.getHomeScore());
+        if(gameModel.getAwayScore() != null)
+            updateGame.setAwayScore(gameModel.getAwayScore());
+        if(gameModel.getHomeScoreAfterOvertime() != null)
+            updateGame.setHomeScoreAfterOvertime(gameModel.getHomeScoreAfterOvertime());
+        if(gameModel.getAwayScoreAfterOvertime() != null)
+            updateGame.setAwayScoreAfterOvertime(gameModel.getAwayScoreAfterOvertime());
+        gameService.updateGame(id, updateGame);
+        GameModel modelToReturn = new GameModel();
+        modelToReturn.makeModel(updateGame);
+        return ResponseEntity.ok(modelToReturn);
     }
 
-//    @Override
-//    public ResponseEntity<GameEntity> addGame(GameEntity gameEntity) {
-//        GameEntity addGame = gameService.saveGame(gameEntity);
-//        return ResponseEntity.ok(addGame);
-//    }
-
     @Override
-    public ResponseEntity<GameEntity> addGame(GameModel gameModel) {
+    public ResponseEntity<GameModel> addGame(GameModel gameModel) {
         GameEntity addGame = new GameEntity();
         if(teamService.getTeamByCountryCode(gameModel.getHomeTeamCode()) == null)
             throw new ApiRequestException("Home team not found!");
@@ -44,12 +62,20 @@ public class GameController implements GameAPI {
         addGame.setAwayTeam(teamService.getTeamByCountryCode(gameModel.getAwayTeamCode()));
         addGame.setGameDate(gameModel.getDateTime());
         gameService.saveGame(addGame);
-        return ResponseEntity.ok(addGame);
+        GameModel modelToReturn = new GameModel();
+        modelToReturn.makeModel(addGame);
+        return ResponseEntity.ok(modelToReturn);
     }
 
     @Override
-    public ResponseEntity<List<GameEntity>> getGame() {
-        return ResponseEntity.ok(gameService.getGames());
+    public ResponseEntity<List<GameModel>> getGame() {
+        List<GameModel> gameModels = new ArrayList<>();
+        GameModel gameModel = new GameModel();
+        for (GameEntity game : gameService.getGames()) {
+            gameModel.makeModel(game);
+            gameModels.add(gameModel);
+        }
+        return ResponseEntity.ok(gameModels);
     }
 
     @Override
@@ -58,8 +84,11 @@ public class GameController implements GameAPI {
     }
 
     @Override
-    public ResponseEntity<?> deleteGameById(Long id) throws Exception {
+    public ResponseEntity<String> deleteGameById(Long id) throws Exception {
+        if(gameService.findById(id).isEmpty())
+            throw new ApiRequestException("Game to delete not found!");
+        String response = "Deleted game. id: " + id.toString();
         gameService.deleteGame(id);
-        return null;
+        return ResponseEntity.ok(response);
     }
 }

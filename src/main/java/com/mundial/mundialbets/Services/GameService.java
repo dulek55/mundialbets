@@ -5,6 +5,7 @@ import com.mundial.mundialbets.Repositories.GameRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GameService {
@@ -31,6 +32,10 @@ public class GameService {
     public GameEntity getGamesById(Long id) throws Exception {
         return gameRepository.findById(id)
                 .orElseThrow(() -> new Exception("Game id not found : " + id, new Error("Game NOT FOUND")));
+    }
+
+    public Optional<GameEntity> findById(Long id) {
+        return gameRepository.findById(id);
     }
 
     public void deleteGame(Long id) throws Exception {

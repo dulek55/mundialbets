@@ -11,20 +11,17 @@ import java.util.List;
 public interface GameAPI {
 
     @PutMapping("/{id}")
-    ResponseEntity<GameEntity> updateGame(@PathVariable Long id, @RequestBody GameEntity gameEntity) throws Exception;
-
-//    @PostMapping
-//    ResponseEntity<GameEntity> addGame(@RequestBody GameEntity gameEntity);
+    ResponseEntity<GameModel> updateGame(@PathVariable Long id, @RequestBody GameModel gameModel) throws Exception;
 
     @PostMapping
-    ResponseEntity<GameEntity> addGame(@RequestBody GameModel gameModel);
+    ResponseEntity<GameModel> addGame(@RequestBody GameModel gameModel);
 
     @GetMapping
-    ResponseEntity<List<GameEntity>> getGame();
+    ResponseEntity<List<GameModel>> getGame();
 
     @GetMapping("/{id}")
     ResponseEntity<GameEntity> getGameById(@PathVariable Long id) throws Exception;
 
     @DeleteMapping("/{id}")
-    ResponseEntity<?> deleteGameById(@PathVariable Long id) throws Exception;
+    ResponseEntity<String> deleteGameById(@PathVariable Long id) throws Exception;
 }
