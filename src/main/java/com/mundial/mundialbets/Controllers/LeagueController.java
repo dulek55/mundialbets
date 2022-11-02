@@ -1,18 +1,14 @@
 package com.mundial.mundialbets.Controllers;
 
-import com.mundial.mundialbets.Entities.GameEntity;
 import com.mundial.mundialbets.Entities.LeagueEntity;
 import com.mundial.mundialbets.Entities.UserEntity;
 import com.mundial.mundialbets.Exceptions.ApiRequestException;
-import com.mundial.mundialbets.Models.GameModel;
 import com.mundial.mundialbets.Models.LeagueModel;
 import com.mundial.mundialbets.Models.LeagueResponseModel;
 import com.mundial.mundialbets.Services.LeagueService;
 import com.mundial.mundialbets.Services.UserService;
 import com.mundial.mundialbets.api.LeagueAPI;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
@@ -123,8 +119,8 @@ public class LeagueController implements LeagueAPI {
     @Override
     public ResponseEntity<List<LeagueResponseModel>> getLeague() {
         List<LeagueResponseModel> leagueResponseModels = new ArrayList<>();
-        LeagueResponseModel leagueResponseModel = new LeagueResponseModel();
         for (LeagueEntity league : leagueService.getLeagues()) {
+            LeagueResponseModel leagueResponseModel = new LeagueResponseModel();
             leagueResponseModel.makeLeagueResponse(league);
             leagueResponseModels.add(leagueResponseModel);
         }

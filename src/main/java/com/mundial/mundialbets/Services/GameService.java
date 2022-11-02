@@ -29,7 +29,7 @@ public class GameService {
         return gameRepository.findAll();
     }
 
-    public GameEntity getGamesById(Long id) throws Exception {
+    public GameEntity getGameById(Long id) throws Exception {
         return gameRepository.findById(id)
                 .orElseThrow(() -> new Exception("Game id not found : " + id, new Error("Game NOT FOUND")));
     }

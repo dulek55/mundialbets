@@ -1,6 +1,7 @@
 package com.mundial.mundialbets.api;
 
 import com.mundial.mundialbets.Entities.UserBetEntity;
+import com.mundial.mundialbets.Models.UserBetModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,10 +13,10 @@ public interface UserBetsAPI {
     ResponseEntity<UserBetEntity> updateUserBets(@PathVariable Long id, @RequestBody UserBetEntity userBetEntity) throws Exception;
 
     @PostMapping
-    ResponseEntity<UserBetEntity> addUserBets(@RequestBody UserBetEntity userBetEntity);
+    ResponseEntity<UserBetModel> addUserBets(@RequestBody UserBetModel userBetModel) throws Exception;
 
     @GetMapping
-    ResponseEntity<List<UserBetEntity>> getUserBets();
+    ResponseEntity<List<UserBetModel>> getUserBets(@RequestBody UserBetModel userBetModel);
 
     @GetMapping("/{id}")
     ResponseEntity<UserBetEntity> getUserBetsById(@PathVariable Long id) throws Exception;
