@@ -64,19 +64,18 @@ export default function Team() {
                 <h1 style={{color:"blue"}}><u>Add team</u></h1>
                 <Box
                 component="form"
-                sx={{
-                    '& > *': { margin:"5px auto" },
-                }}
                 noValidate
                 autoComplete="off"
                 >
                     <TextField id="outlined-basic" label="Team name" variant="outlined" fullWidth 
                     value={countryName}
                     onChange={(e)=>setName(e.target.value)}
+                    sx={{ m:1 }}
                     />
                     <TextField id="outlined-basic" label="Team code" variant="outlined" fullWidth
                     value={countryCode}
                     onChange={(e)=>setCode(e.target.value)}
+                    sx={{ m:1 }}
                     />
                     <Button id='buttonSubmit' variant="contained" color="secondary" onClick={handleClick}>SUBMIT</Button> <br/>
                 </Box>
