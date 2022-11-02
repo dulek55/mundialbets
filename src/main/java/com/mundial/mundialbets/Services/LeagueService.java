@@ -1,10 +1,13 @@
 package com.mundial.mundialbets.Services;
 
+import com.mundial.mundialbets.Entities.GameEntity;
 import com.mundial.mundialbets.Entities.LeagueEntity;
 import com.mundial.mundialbets.Repositories.LeagueRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class LeagueService {
 
@@ -32,6 +35,10 @@ public class LeagueService {
     public LeagueEntity getLeagueById(Long id) throws Exception {
         return leagueRepository.findById(id)
                 .orElseThrow(() -> new Exception("League id not found : " + id, new Error("League NOT FOUND")));
+    }
+
+    public Optional<LeagueEntity> findById(Long id) {
+        return leagueRepository.findById(id);
     }
 
     public void deleteLeague(Long id) throws Exception {
