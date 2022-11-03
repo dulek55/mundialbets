@@ -12,15 +12,17 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "betsApi")
-public class BetApiEntity {
+@Table(name = "odds")
+public class OddsEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Name;
     private Float homeTeamWin;
     private Float homeTeamWinOrDraw;
     private Float draw;
     private Float awayTeamWin;
     private Float awayTeamWinOrDraw;
+    @OneToOne
+    @JoinColumn(name="game_id")
+    private GameEntity game;
 }

@@ -25,7 +25,7 @@ public class LeagueEntity {
     private String Name;
     private boolean active = true;
 
-    @JsonManagedReference
+    @JsonIgnoreProperties
     @ManyToMany
     @JoinTable(name = "league_users")
     private List<UserEntity> users = new ArrayList<>();

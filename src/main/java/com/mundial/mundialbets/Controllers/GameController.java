@@ -24,6 +24,8 @@ public class GameController implements GameAPI {
 
     @Override
     public ResponseEntity<GameModel> updateGame(Long id, GameModel gameModel) throws Exception {
+        if(gameService.findById(id).isEmpty())
+            throw new ApiRequestException("Game to edit not found!");
         GameEntity updateGame = gameService.getGameById(id);
         if(gameModel.getHomeTeamCode() != null) {
             if(teamService.getTeamByCountryCode(gameModel.getHomeTeamCode()) == null)
