@@ -25,4 +25,8 @@ public class UserBetEntity {
     @ManyToOne
     @JoinColumn(name = "game_id")
     private GameEntity game;
+
+    @ManyToOne
+    @JoinColumn(name = "league_id")
+    private LeagueEntity league;
 }

@@ -24,7 +24,7 @@ public class GameController implements GameAPI {
 
     @Override
     public ResponseEntity<GameModel> updateGame(Long id, GameModel gameModel) throws Exception {
-        GameEntity updateGame = gameService.getGamesById(id);
+        GameEntity updateGame = gameService.getGameById(id);
         if(gameModel.getHomeTeamCode() != null) {
             if(teamService.getTeamByCountryCode(gameModel.getHomeTeamCode()) == null)
                 throw new ApiRequestException("Home team not found!");
@@ -80,7 +80,7 @@ public class GameController implements GameAPI {
 
     @Override
     public ResponseEntity<GameEntity> getGameById(Long id) throws Exception {
-        return ResponseEntity.ok(gameService.getGamesById(id));
+        return ResponseEntity.ok(gameService.getGameById(id));
     }
 
     @Override
