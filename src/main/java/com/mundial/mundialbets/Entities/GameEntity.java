@@ -1,7 +1,6 @@
 package com.mundial.mundialbets.Entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,12 +28,12 @@ public class GameEntity {
     Integer homeScoreAfterOvertime;
     Integer awayScoreAfterOvertime;
 
-    @JsonBackReference(value = "homeTeam-game")
+    @JsonBackReference(value = "homeTeam_game")
     @ManyToOne
     @JoinColumn(name = "home_team_id")
     private TeamEntity homeTeam;
 
-    @JsonBackReference(value = "awayTeam-game")
+    @JsonBackReference(value = "awayTeam_game")
     @ManyToOne
     @JoinColumn(name = "away_team_id")
     private TeamEntity awayTeam;
@@ -43,6 +42,6 @@ public class GameEntity {
     private Set<UserBetEntity> userBets;
 
     @OneToOne
-    @JoinColumn(name="betApi_id")
-    private BetApiEntity betApi;
+    @JoinColumn(name="odds_id")
+    private OddsEntity odds;
 }

@@ -23,11 +23,11 @@ public class TeamEntity {
     private String countryName;
     private String countryCode;
 
-    @JsonManagedReference(value = "homeTeam-game")
+    @JsonManagedReference(value = "homeTeam_game")
     @OneToMany(mappedBy = "homeTeam", cascade = CascadeType.ALL)
     private Set<GameEntity> homeGames;
 
-    @JsonManagedReference(value = "awayTeam-game")
+    @JsonManagedReference(value = "awayTeam_game")
     @OneToMany(mappedBy = "awayTeam", cascade = CascadeType.ALL)
     private Set<GameEntity> awayGames;
 }
