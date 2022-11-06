@@ -3,6 +3,7 @@ package com.mundial.mundialbets.api;
 import com.mundial.mundialbets.Entities.LeagueEntity;
 import com.mundial.mundialbets.Models.LeagueModel;
 import com.mundial.mundialbets.Models.LeagueResponseModel;
+import com.mundial.mundialbets.Models.UserScoreModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +25,9 @@ public interface LeagueAPI {
 
     @GetMapping
     ResponseEntity<List<LeagueResponseModel>> getLeague();
+
+    @GetMapping("/getScores")
+    ResponseEntity<List<UserScoreModel>> getUsersScore(@RequestBody LeagueModel leagueModel) throws Exception;
 
     @GetMapping("/usersleagues")
     ResponseEntity<List<LeagueResponseModel>> getUsersLeagues(@RequestBody LeagueModel leagueModel) throws Exception;

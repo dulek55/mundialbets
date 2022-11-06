@@ -1,7 +1,8 @@
 package com.mundial.mundialbets.Services;
 
-import com.mundial.mundialbets.Entities.GameEntity;
 import com.mundial.mundialbets.Entities.LeagueEntity;
+import com.mundial.mundialbets.Entities.UserBetEntity;
+import com.mundial.mundialbets.Entities.UserEntity;
 import com.mundial.mundialbets.Repositories.LeagueRepository;
 import org.springframework.stereotype.Service;
 
@@ -16,7 +17,6 @@ public class LeagueService {
     public LeagueService(LeagueRepository leagueRepository) {
         this.leagueRepository = leagueRepository;
     }
-
 
     public LeagueEntity saveLeague(LeagueEntity leagueEntity) {
         return leagueRepository.save(leagueEntity);
