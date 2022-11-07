@@ -65,19 +65,18 @@ export default function Team() {
                 <h1> Add team</h1>
                 <Box
                 component="form"
-                sx={{
-                    '& > *': { margin:"5px auto" },
-                }}
                 noValidate
                 autoComplete="off"
                 >
                     <TextField id="outlined-basic" label="Team name" variant="outlined" fullWidth 
                     value={countryName}
                     onChange={(e)=>setName(e.target.value)}
+                    sx={{ m:1 }}
                     />
                     <TextField id="outlined-basic" label="Team code" variant="outlined" fullWidth
                     value={countryCode}
                     onChange={(e)=>setCode(e.target.value)}
+                    sx={{ m:1 }}
                     />
                     <Button id='buttonSubmit' variant="contained" color="secondary" onClick={handleClick}>SUBMIT</Button> <br/>
                 </Box>
@@ -85,7 +84,7 @@ export default function Team() {
 
             
             <Paper elevation={3} style={paperStyle}>
-            <h1>Teams</h1>k
+            <h1>Teams</h1>
                 {teams.map(team=>(
                     <Paper elevation={6} style={{margin:"10px", padding:"15px", textAlign:"left"}} key={team.id}>
                         ID: {team.id} <br/>
