@@ -22,10 +22,10 @@ export default function Team() {
                 <h1>Timetable</h1><br/>
                 {teams.map(team=>(
                         <Paper class="background" elevation={6} style={{margin:"10px", padding:"15px", textAlign:"center"}} key={team.id}>
-                            <Collapsible trigger = {team.countryName}><br/>
-                            <Button color="success" variant="contained">WIN</Button>&nbsp;&nbsp;&nbsp;
-                            <Button color="warning" variant="contained">DRAW</Button>&nbsp;&nbsp;&nbsp;
-                            <Button color="error" variant="contained">LOSE</Button>&nbsp;&nbsp;&nbsp;
+                            <Collapsible label = {team.countryName}>
+                            <Button style={{marginLeft: 15, marginRight: 15}} color="success" variant="contained">WIN</Button>
+                            <Button style={{marginLeft: 15, marginRight: 15}} color="warning" variant="contained">DRAW</Button>
+                            <Button style={{marginLeft: 15, marginRight: 15}} color="error" variant="contained">LOSE</Button>
                             </Collapsible>
                         </Paper>            
                 ))}
