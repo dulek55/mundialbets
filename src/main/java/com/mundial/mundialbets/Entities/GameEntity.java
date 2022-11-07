@@ -28,12 +28,12 @@ public class GameEntity {
     Integer homeScoreAfterOvertime;
     Integer awayScoreAfterOvertime;
 
-    @JsonBackReference(value = "home_team_game")
+    @JsonBackReference(value = "homeTeam_game")
     @ManyToOne
     @JoinColumn(name = "home_team_id")
     private TeamEntity homeTeam;
 
-    @JsonBackReference(value = "away_team_game")
+    @JsonBackReference(value = "awayTeam_game")
     @ManyToOne
     @JoinColumn(name = "away_team_id")
     private TeamEntity awayTeam;
