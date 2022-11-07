@@ -30,12 +30,12 @@ public class GameEntity {
 
     @JsonBackReference(value = "home_team_game")
     @ManyToOne
-    @JoinColumn(name = "homeTeam_id")
+    @JoinColumn(name = "home_team_id")
     private TeamEntity homeTeam;
 
     @JsonBackReference(value = "away_team_game")
     @ManyToOne
-    @JoinColumn(name = "awayTeam_id")
+    @JoinColumn(name = "away_team_id")
     private TeamEntity awayTeam;
 
     @OneToMany(mappedBy = "game", cascade = CascadeType.ALL)
