@@ -9,8 +9,9 @@ function App() {
   return (
     <div className="App">
     <AppBar/>  
-    <Team/>
-    <Timetable/>
+    {/* <Team/> */}
+    {/* <Timetable/> */}
+    <Coll/>
     </div>
   );
 }
