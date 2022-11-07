@@ -28,11 +28,6 @@ export default function Coll() {
     );
   };
 
-  const database = [
-    { id: 1, name: "Name1", description: "Desc1" },
-    { id: 2, name: "Name2", description: "Desc2" }
-  ];
-
   return (
     <div className="tracker_master">
       {teams.map((team) => (
