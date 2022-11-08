@@ -47,7 +47,6 @@ export default function Team() {
             .then((result)=>{
                 setTeams(result);
             });
-    
     }
 
     React.useEffect(()=>{

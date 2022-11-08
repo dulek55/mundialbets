@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api/userbet")
+@CrossOrigin(origins = "http://localhost:3000/")
 public interface UserBetsAPI {
     @PutMapping("/{id}")
     ResponseEntity<UserBetEntity> updateUserBets(@PathVariable Long id, @RequestBody UserBetEntity userBetEntity) throws Exception;

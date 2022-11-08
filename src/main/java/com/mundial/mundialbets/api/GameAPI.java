@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api/games")
+@CrossOrigin(origins = "http://localhost:3000/")
 public interface GameAPI {
 
     @PutMapping("/{id}")

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api/leagues")
+@CrossOrigin(origins = "http://localhost:3000/")
 public interface LeagueAPI {
     @PutMapping( {"/edit", "/active"} )
     ResponseEntity<LeagueResponseModel> editLeague(@RequestBody LeagueModel leagueModel) throws Exception;

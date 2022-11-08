@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequestMapping("/api/user")
+@CrossOrigin(origins = "http://localhost:3000/")
 public interface UserAPI {
     @PutMapping("/{id}")
     ResponseEntity<UserEntity> updateUser(@PathVariable Long id, @RequestBody UserEntity userEntity) throws Exception;
