@@ -11,6 +11,7 @@ import org.springframework.security.core.userdetails.User;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -22,13 +23,16 @@ public class LeagueEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String Name;
+    private String name;
     private boolean active = true;
 
     @JsonIgnoreProperties
     @ManyToMany
     @JoinTable(name = "league_users")
     private List<UserEntity> users = new ArrayList<>();
+
+    @OneToMany(mappedBy = "league", cascade = CascadeType.ALL)
+    private List<UserBetEntity> userBets;
 
     public void addUser(UserEntity userEntity) {
         this.users.add(userEntity);
