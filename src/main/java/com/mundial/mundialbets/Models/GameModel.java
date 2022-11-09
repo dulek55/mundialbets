@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 public class GameModel {
+    Long gameId;
     String homeTeamCode;
     String awayTeamCode;
     LocalDateTime dateTime;
@@ -18,6 +19,7 @@ public class GameModel {
     Integer awayScoreAfterOvertime;
 
     public void makeModel(GameEntity gameEntity) {
+        this.gameId = gameEntity.getId();
         this.homeTeamCode = gameEntity.getHomeTeam().getCountryCode();
         this.awayTeamCode = gameEntity.getAwayTeam().getCountryCode();
         this.dateTime = gameEntity.getGameDate();

@@ -1,10 +1,13 @@
 import React from 'react';
 import Collapsible from 'react-collapsible';
-import { Button } from '@mui/material';
+import { Button, Paper } from '@mui/material';
+import { Container } from '@mui/system';
 
 export default function Coll() {
   const[teams, setTeams] = React.useState([])
   const[games, setGames] = React.useState([])
+  const paperStyle = {padding:'20px 10px', width:600,margin:"20px auto"}
+  const buttonStyle = {margin:'10px 10px'}
 
   // React.useEffect(()=>{
   //   fetch("http://localhost:8080/api/games")
@@ -45,25 +48,33 @@ export default function Coll() {
   const CollsGame = ({ game }) => {
     const [open, setOpen] = React.useState(false);
     return (
-      <div onClick={() => setOpen(!open)}>
-        <Button color="success" variant="contained">Show game</Button>
+      <div onClick={() => setOpen(!open)} key={game.gameId}>
+        <Button variant="contained">{game.homeTeamCode} VS {game.awayTeamCode}</Button>
         <Collapsible open={open}>
-          <div>{game.homeTeamCode}</div>
+          <Button style={buttonStyle} variant="contained">1</Button>
+          <Button style={buttonStyle} variant="contained">1X</Button>
+          <Button style={buttonStyle} variant="contained">X</Button>
+          <Button style={buttonStyle} variant="contained">X2</Button>
+          <Button style={buttonStyle} variant="contained">2</Button>
         </Collapsible>
       </div>
     );
   };
   
   return (
-    <div className="tracker_master">
-      <Button id='getTeamsButton' variant="contained" color="secondary" onClick={getTeams}>Get teams</Button> <br/>
+    <Container>
+      <Paper elevation={3} style={paperStyle}>
+      <Button id='getTeamsButton' variant="contained" color="secondary" onClick={getTeams} sx={{ m:1 }}>Get teams</Button><br/>
       {teams.map((theTeam) => (
         <CollsTeam team={theTeam} key={theTeam.id} />
       ))}
-      <Button id='getGamesButton' variant="contained" color="secondary" onClick={getGames}>Get games</Button> <br/>
-      {games.map((game) => (
-        <CollsGame game={game}/>
+      </Paper>
+      <Paper elevation={3} style={paperStyle}>
+      <Button id='getGamesButton' variant="contained" color="secondary" onClick={getGames} sx={{ m:1 }}>Get games</Button><br/>
+      {games.map((theGame) => (
+        <CollsGame game={theGame} key={theGame.gameId}/>
       ))}
-    </div>
+      </Paper>
+    </Container>
   );
 }
