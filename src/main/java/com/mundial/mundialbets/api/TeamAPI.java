@@ -1,6 +1,7 @@
 package com.mundial.mundialbets.api;
 
 import com.mundial.mundialbets.Entities.TeamEntity;
+import com.mundial.mundialbets.Models.TeamModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,7 @@ public interface TeamAPI {
     ResponseEntity<TeamEntity> addTeam(@RequestBody TeamEntity teamEntity);
 
     @GetMapping
-    ResponseEntity<List<TeamEntity>> getTeam();
+    ResponseEntity<List<TeamModel>> getTeam();
 
     @GetMapping("/{id}")
     ResponseEntity<TeamEntity> getTeamById(@PathVariable Long id) throws Exception;

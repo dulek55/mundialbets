@@ -9,6 +9,7 @@ export default function Team() {
     const[countryName, setName] = React.useState('')
     const[countryCode, setCode] = React.useState('')
     const[teams, setTeams] = React.useState([])
+    
 
     const handleClick=(e)=>{
         e.preventDefault()
@@ -61,7 +62,7 @@ export default function Team() {
     return (
         <Container>         
             <Paper elevation={3} style={paperStyle}>
-                <h1 style={{color:"blue"}}><u>Add team</u></h1>
+                <h1> Add team</h1>
                 <Box
                 component="form"
                 noValidate
@@ -81,8 +82,9 @@ export default function Team() {
                 </Box>
             </Paper>
 
-            <h1>Teams</h1>
+            
             <Paper elevation={3} style={paperStyle}>
+            <h1>Teams</h1>
                 {teams.map(team=>(
                     <Paper elevation={6} style={{margin:"10px", padding:"15px", textAlign:"left"}} key={team.id}>
                         ID: {team.id} <br/>
