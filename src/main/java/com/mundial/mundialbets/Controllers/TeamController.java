@@ -2,11 +2,13 @@ package com.mundial.mundialbets.Controllers;
 
 import com.mundial.mundialbets.Entities.TeamEntity;
 import com.mundial.mundialbets.Exceptions.ApiRequestException;
+import com.mundial.mundialbets.Models.TeamModel;
 import com.mundial.mundialbets.Services.TeamService;
 import com.mundial.mundialbets.api.TeamAPI;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -31,8 +33,14 @@ public class TeamController implements TeamAPI {
     }
 
     @Override
-    public ResponseEntity<List<TeamEntity>> getTeam() {
-        return ResponseEntity.ok(teamService.getTeam());
+    public ResponseEntity<List<TeamModel>> getTeam() {
+        List<TeamModel> teamModels = new ArrayList<>();
+        for (TeamEntity team : teamService.getTeam()) {
+            TeamModel teamModel = new TeamModel();
+            teamModel.makeModel(team);
+            teamModels.add(teamModel);
+        }
+        return ResponseEntity.ok(teamModels);
     }
 
     @Override
