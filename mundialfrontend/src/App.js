@@ -1,17 +1,23 @@
+import React from 'react';
 import './App.css';
-import AppBar from './components/Appbar';
-import Team from './components/Team';
-import Coll from './components/Coll';
-import Timetable from './components/Timetable';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import Appbar from './components/Appbar';
+import HomePage from './pages/HomePage';
+import TeamPage from './pages/TeamPage';
+import TimetablePage from './pages/TimetablePage';
 
-
-function App() {
+const App = () => {
   return (
-    <div className="App">
-    <AppBar/>  
-    <Team/>
-    <Timetable/>
-    </div>
+    <Router>
+      <div>
+      <Appbar title="MundialApp" />
+      <Routes>
+        <Route exact path="/" element={<HomePage/>} />
+        <Route path="/TeamPage" element={<TeamPage/>} />
+        <Route path="/TimetablePage" element={<TimetablePage/>} />
+      </Routes>        
+      </div>  
+    </Router>
   );
 }
 
