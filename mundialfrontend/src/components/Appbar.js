@@ -73,8 +73,17 @@ export default function Appbar({title}) {
           <ListItem button component={Link} to="/TeamPage" onClick={toggleDrawer(false)}>
             <ListItemText primary="Team" />
           </ListItem>
+          <ListItem button component={Link} to="/leagues" onClick={toggleDrawer(false)}>
+            <ListItemText primary="Leagues" />
+          </ListItem>
           <ListItem button component={Link} to="/TimetablePage" onClick={toggleDrawer(false)}>
             <ListItemText primary="Timetable" />
+          </ListItem>
+          <ListItem button component={Link} to="/login" onClick={toggleDrawer(false)}>
+            <ListItemText primary="Login" />
+          </ListItem>
+          <ListItem button component={Link} to="/register" onClick={toggleDrawer(false)}>
+            <ListItemText primary="Register" />
           </ListItem>
         </List>
       </Drawer>

@@ -5,7 +5,7 @@ import { Container } from '@mui/system';
 import { Button, Paper } from '@mui/material';
 
 export default function Team() {
-    const paperStyle = {padding:'50px 20px', width:600,margin:"20px auto"}
+    const paperStyle = {padding:'50px 20px', width:600, margin:"20px auto"}
     const[countryName, setName] = React.useState('')
     const[countryCode, setCode] = React.useState('')
     const[teams, setTeams] = React.useState([])
