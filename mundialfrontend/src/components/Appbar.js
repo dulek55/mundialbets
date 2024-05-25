@@ -73,6 +73,9 @@ export default function Appbar({title}) {
           <ListItem button component={Link} to="/TeamPage" onClick={toggleDrawer(false)}>
             <ListItemText primary="Team" />
           </ListItem>
+          <ListItem button component={Link} to="/bets/" onClick={toggleDrawer(false)}>
+            <ListItemText primary="My Bets" />
+          </ListItem>
           <ListItem button component={Link} to="/leagues" onClick={toggleDrawer(false)}>
             <ListItemText primary="Leagues" />
           </ListItem>
