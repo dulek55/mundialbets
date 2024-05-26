@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import {  Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
@@ -12,7 +12,7 @@ import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 
-export default function Appbar({title}) {
+export default function Appbar({ title, currentUserId }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
 
   const toggleDrawer = (open) => (event) => {
@@ -37,22 +37,23 @@ export default function Appbar({title}) {
             <MenuIcon />
           </IconButton>
           <Typography 
-          variant="h6" 
-          component={Link} 
-          to="/"
-          sx={{ 
-            flexGrow: 1,
-            textDecoration: 'none',
-            color: 'inherit',
-          }}>
-          {title}
+            variant="h6" 
+            component={Link} 
+            to="/"
+            sx={{ 
+              flexGrow: 1,
+              textDecoration: 'none',
+              color: 'inherit',
+            }}
+          >
+            {title}
           </Typography>
         </Toolbar>
       </AppBar>
       <Drawer 
-      anchor="left" 
-      open={drawerOpen} 
-      onClose={toggleDrawer(false)}
+        anchor="left" 
+        open={drawerOpen} 
+        onClose={toggleDrawer(false)}
         sx={{
           '& .MuiDrawer-paper': {
             width: {
@@ -62,18 +63,17 @@ export default function Appbar({title}) {
             },
             display: 'flex',
             alignItems: 'center', // Center items horizontally
-            //justifyContent: 'center', // Center items vertically
           },
         }}
-        >
+      >
         <List>
-        <ListItem button component={Link} to="/" onClick={toggleDrawer(false)}>
+          <ListItem button component={Link} to="/" onClick={toggleDrawer(false)}>
             <ListItemText primary="Home" />
           </ListItem>
           <ListItem button component={Link} to="/TeamPage" onClick={toggleDrawer(false)}>
             <ListItemText primary="Team" />
           </ListItem>
-          <ListItem button component={Link} to="/bets/" onClick={toggleDrawer(false)}>
+          <ListItem button component={Link} to={`/bets/${currentUserId}`} onClick={toggleDrawer(false)}>
             <ListItemText primary="My Bets" />
           </ListItem>
           <ListItem button component={Link} to="/leagues" onClick={toggleDrawer(false)}>

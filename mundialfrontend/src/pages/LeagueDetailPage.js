@@ -1,7 +1,7 @@
 // src/pages/LeagueDetailPage.js
 import React from 'react';
 import { useParams, Link as RouterLink } from 'react-router-dom';
-import { Container, Paper, Typography, Box, Link } from '@mui/material';
+import { Container, Paper, Typography, Box } from '@mui/material';
 
 const paperStyle = {
     padding: '20px',
@@ -9,41 +9,32 @@ const paperStyle = {
     margin: '20px auto'
 };
 
-const betStyle = {
+const participantStyle = {
     margin: '10px',
     padding: '15px',
-    textAlign: 'left',
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center'
+    textAlign: 'left'
 };
 
 const LeagueDetailPage = () => {
-    const { id, name } = useParams();
+    const { name } = useParams();
+
     const participants = [
-        { id: 1, name: 'User1', points: 50, rank: 1 },
-        { id: 2, name: 'User2', points: 44, rank: 2 },
-        { id: 3, name: 'User3', points: 38, rank: 3 },
+        { id: 1, name: 'User 1', points: 50, rank: 1 },
+        { id: 2, name: 'User 2', points: 45, rank: 2 },
+        { id: 3, name: 'User 3', points: 40, rank: 3 },
     ];
 
     return (
         <Container>
             <Paper elevation={3} style={paperStyle}>
                 <Typography variant="h4" component="h1" gutterBottom>
-                    {name}
-                </Typography>
-                <Typography variant="h5" component="h2" gutterBottom>
-                    Participants
+                    League: {name}
                 </Typography>
                 {participants.map((participant) => (
-                    <Paper key={participant.id} elevation={6} style={betStyle}>
-                        <Link 
-                            component={RouterLink} 
-                            to={`/bets/${participant.id}`} 
-                            sx={{ textDecoration: 'none', color: 'inherit', width: '100%' }}
-                        >
+                    <Paper key={participant.id} elevation={6} style={participantStyle}>
+                        <RouterLink to={`/bets/${participant.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
-                                <Typography variant="h6" component="h2" sx={{ flexGrow: 1 }}>
+                                <Typography variant="h6" component="h2">
                                     {participant.name}
                                 </Typography>
                                 <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
@@ -55,7 +46,7 @@ const LeagueDetailPage = () => {
                                     </Typography>
                                 </Box>
                             </Box>
-                        </Link>
+                        </RouterLink>
                     </Paper>
                 ))}
             </Paper>

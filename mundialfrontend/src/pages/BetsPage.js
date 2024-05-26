@@ -1,4 +1,3 @@
-// src/pages/BetsPage.js
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Container, Paper, Typography, Box, Button, Modal, TextField } from '@mui/material';
@@ -31,7 +30,7 @@ const modalStyle = {
     p: 4,
 };
 
-const BetsPage = () => {
+const BetsPage = ({ currentUserId }) => {
     const { userId } = useParams();
     const [open, setOpen] = useState(false);
     const [currentBet, setCurrentBet] = useState(null);
@@ -51,7 +50,7 @@ const BetsPage = () => {
         handleClose();
     };
 
-    const isOwnBets = !userId;
+    const isOwnBets = parseInt(userId) === currentUserId;
 
     const bets = [
         [
